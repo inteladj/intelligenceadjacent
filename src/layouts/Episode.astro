@@ -1,0 +1,155 @@
+---
+import type { Episode } from '../lib/episodes';
+import Base from './Base.astro';
+import { episodePath, formatDate, isoDate, readingMinutes, statusClass, youtubeHref } from '../lib/format';
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  episode: Episode;
+  headings: Heading[];
+}
+
+const { episode, headings } = Astro.props;
+const data = episode.data;
+const toc = headings.filter((heading) => heading.depth === 2);
+const video = youtubeHref(data.youtube);
+const minutes = readingMinutes(episode.body);
+const showUpdated = data.updated && data.updated.getTime() !== data.date.getTime();
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: data.title,
+  description: data.summary,
+  datePublished: data.date.toISOString(),
+  dateModified: (data.updated ?? data.date).toISOString(),
+  mainEntityOfPage: new URL(episodePath(data.slug), Astro.site).href,
+  author: {
+    '@type': 'Organization',
+    name: 'Intelligence Adjacent',
+    url: 'https://intelligenceadjacent.com',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Intelligence Adjacent',
+  },
+};
+---
+
+<Base
+  title={data.title}
+  description={data.summary}
+  ogType="article"
+  published={data.date}
+  updated={data.updated ?? data.date}
+>
+  <article class="episode">
+    <header class="episode-head">
+      <p class="kicker">{data.pillar || 'Episode notes'}</p>
+      <h1>{data.title}</h1>
+      <p class="meta-row">
+        {data.episode && <span>{data.episode}</span>}
+        <time datetime={isoDate(data.date)}>Published {formatDate(data.date)}</time>
+        {showUpdated && data.updated && (
+          <time datetime={isoDate(data.updated)}>Updated {formatDate(data.updated)}</time>
+        )}
+        {minutes && <span>{minutes} min read</span>}
+        {data.status && <span class={statusClass(data.status)}>{data.status}</span>}
+        {data.severity && <span class="badge">{data.severity}</span>}
+        {
+          data.cve.map((id) => (
+            <a class="badge" href={`https://nvd.nist.gov/vuln/detail/${encodeURIComponent(id)}`}>
+              {id}
+            </a>
+          ))
+        }
+      </p>
+      <p class="summary">{data.summary}</p>
+      {
+        video && (
+          <p class="watch">
+            <a class="button" href={video}>Watch the video</a>
+          </p>
+        )
+      }
+      <p class="disclosure">
+        <span>Disclosure. </span>
+        AI assistance was used to help produce this page. A human reviewed every claim, link, and recommendation before publication.
+      </p>
+      {
+        data.tags.length > 0 && (
+          <p class="tag-row">
+            {data.tags.map((tag) => (
+              <a class="tag" href={`/episodes/#${tag}`}>{tag}</a>
+            ))}
+          </p>
+        )
+      }
+    </header>
+
+    <div class="episode-layout">
+      {
+        toc.length > 0 && (
+          <nav class="toc" aria-label="On this page">
+            <p class="toc-title">On this page</p>
+            <ol>
+              {toc.map((heading) => (
+                <li>
+                  <a href={`#${heading.slug}`}>{heading.text}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )
+      }
+      <div class="prose">
+        <slot />
+      </div>
+    </div>
+  </article>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script>
+    function addCopyButtons() {
+      document.querySelectorAll('.prose pre').forEach((block) => {
+        const pre = block as HTMLPreElement;
+        if (pre.querySelector('.copy-button')) return;
+        const code = pre.querySelector('code');
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'copy-button';
+        button.textContent = 'Copy';
+        const live = document.createElement('span');
+        live.className = 'visually-hidden';
+        live.setAttribute('aria-live', 'polite');
+        button.addEventListener('click', async () => {
+          const text = (code?.innerText ?? pre.innerText).replace(/\u00a0/g, ' ');
+          try {
+            await navigator.clipboard.writeText(text);
+            button.textContent = 'Copied';
+            live.textContent = 'Copied to clipboard';
+          } catch {
+            if (code) {
+              const range = document.createRange();
+              range.selectNodeContents(code);
+              const selection = getSelection();
+              selection?.removeAllRanges();
+              selection?.addRange(range);
+            }
+            button.textContent = 'Selected';
+            live.textContent = 'Clipboard unavailable. The code is selected so you can copy it.';
+          }
+          window.setTimeout(() => {
+            button.textContent = 'Copy';
+            live.textContent = '';
+          }, 2000);
+        });
+        pre.append(button, live);
+      });
+    }
+    addCopyButtons();
+  </script>
+</Base>

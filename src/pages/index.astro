@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import EpisodeCard from '../components/EpisodeCard.astro';
+import { site } from '../config';
+import { getEpisodes } from '../lib/episodes';
+
+const episodes = (await getEpisodes()).slice(0, 5);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: site.url,
+  description: site.description,
+};
+---
+
+<Base title={site.name} description={site.description}>
+  <p class="kicker">{site.tagline}</p>
+  <h1>{site.name}</h1>
+  <p class="lede">{site.description}</p>
+  <p class="actions">
+    <a class="button" href={site.youtube}>YouTube</a>
+    <a class="button button-secondary" href="/support/">Support</a>
+  </p>
+  <ul class="principles">
+    <li>
+      <strong>Primary sources.</strong>
+      Vendors, advisories, and the commit. Other write-ups are labeled as research, not as the record.
+    </li>
+    <li>
+      <strong>What to do.</strong>
+      Whether it matters to you, the steps that close it, and the extra detail that did not fit in the video.
+    </li>
+    <li>
+      <strong>Show the work.</strong>
+      Every source says what it was used for. If a claim is wrong, the correction is public.
+    </li>
+  </ul>
+  <div class="section-heading">
+    <h2 id="latest">Latest episodes</h2>
+    <a href="/episodes/">All episodes</a>
+  </div>
+  {
+    episodes.length === 0 ? (
+      <p>No episodes yet.</p>
+    ) : (
+      <div class="cards">
+        {episodes.map((episode) => (
+          <EpisodeCard episode={episode} level="h3" />
+        ))}
+      </div>
+    )
+  }
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</Base>

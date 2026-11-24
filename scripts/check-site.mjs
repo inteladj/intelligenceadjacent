@@ -60,6 +60,7 @@ for (const file of sourceFiles) {
 const required = [
   'index.html',
   'episodes/index.html',
+  'episodes/optimizely-cve-2026-132224/index.html',
   'about/index.html',
   'support/index.html',
   'corrections/index.html',
@@ -108,7 +109,8 @@ const home = fs.existsSync(path.join(dist, 'index.html')) ? read(path.join(dist,
 if (!home.includes('tired of the hype')) fail('home page is missing the positioning line');
 if (!home.includes('Security news, minus the hype.')) fail('home page is missing the tagline');
 if (!home.includes('/wordmark-lockup.svg')) fail('home page is missing the wordmark');
-if (!home.includes('First episode coming soon.')) fail('home page is missing the empty state');
+if (!home.includes('CVE-2026-132224')) fail('home page is missing the episode');
+if (home.includes('First episode coming soon.')) fail('home page still shows the empty state');
 
 const support = fs.existsSync(path.join(dist, 'support/index.html'))
   ? read(path.join(dist, 'support/index.html'))
@@ -120,9 +122,7 @@ if (!support.toLowerCase().includes('voluntary')) fail('support page does not sa
 const corrections = fs.existsSync(path.join(dist, 'corrections/index.html'))
   ? read(path.join(dist, 'corrections/index.html'))
   : '';
-if (!corrections.includes('No episodes have a corrections log yet.')) {
-  fail('corrections page is missing the empty state');
-}
+if (!corrections.includes('Page created')) fail('corrections page is missing the publication entry');
 if (corrections.includes('</a>or')) fail('corrections page is missing a space after the email link');
 
 const cname = fs.existsSync(path.join(dist, 'CNAME')) ? read(path.join(dist, 'CNAME')).trim() : '';
@@ -130,13 +130,21 @@ if (cname !== 'intelligenceadjacent.com') fail(`CNAME is ${JSON.stringify(cname)
 
 const rss = fs.existsSync(path.join(dist, 'rss.xml')) ? read(path.join(dist, 'rss.xml')) : '';
 if (!rss.includes('Intelligence Adjacent')) fail('RSS feed is missing the channel title');
+if (!rss.includes('CVE-2026-132224')) fail('RSS feed is missing the episode');
 
 const episodesIndex = fs.existsSync(path.join(dist, 'episodes/index.html'))
   ? read(path.join(dist, 'episodes/index.html'))
   : '';
-if (!episodesIndex.includes('First episode coming soon.')) fail('episodes page is missing the empty state');
+if (!episodesIndex.includes('CVE-2026-132224')) fail('episodes page is missing the episode');
+if (episodesIndex.includes('First episode coming soon.')) fail('episodes page still shows the empty state');
 
-const mockBits = ['SSHole', 'sshole-cve-2026-123158', 'CVE-2026-123158', 'IA-001'];
+const episodeHtml = fs.existsSync(path.join(dist, 'episodes/optimizely-cve-2026-132224/index.html'))
+  ? read(path.join(dist, 'episodes/optimizely-cve-2026-132224/index.html'))
+  : '';
+if (!episodeHtml.includes('https://youtu.be/KkomgYnyntA')) fail('episode page is missing the video URL');
+if (!episodeHtml.includes('Watch the video')) fail('episode page is missing the video link');
+
+const mockBits = ['SSHole', 'sshole-cve-2026-123158', 'CVE-2026-123158'];
 for (const file of builtText) {
   const text = read(file);
   const relative = path.relative(root, file);

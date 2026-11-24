@@ -10,6 +10,6 @@ export const site = {
   description:
     "Security news, explained by someone who's tired of the hype. What happened, whether it matters to you, and exactly what to do about it.",
   youtube: 'https://www.youtube.com/@IntelligenceAdjacent',
-  supportUrl: 'https://buymeacoffee.com/inteladj',
-  supportLabel: 'Buy me a coffee',
+  supportUrl: 'https://ko-fi.com/intelligenceadjacent',
+  supportLabel: 'Ko-fi',
 } as const;

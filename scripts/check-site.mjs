@@ -60,7 +60,6 @@ for (const file of sourceFiles) {
 const required = [
   'index.html',
   'episodes/index.html',
-  'episodes/sshole-cve-2026-123158/index.html',
   'about/index.html',
   'support/index.html',
   'corrections/index.html',
@@ -109,29 +108,7 @@ const home = fs.existsSync(path.join(dist, 'index.html')) ? read(path.join(dist,
 if (!home.includes('tired of the hype')) fail('home page is missing the positioning line');
 if (!home.includes('Security news, minus the hype.')) fail('home page is missing the tagline');
 if (!home.includes('/wordmark-lockup.svg')) fail('home page is missing the wordmark');
-if (!home.includes('SSHole')) fail('home page is missing the episode');
-
-const episodePath = path.join(dist, 'episodes/sshole-cve-2026-123158/index.html');
-const episodeHtml = fs.existsSync(episodePath) ? read(episodePath) : '';
-for (const section of [
-  'TL;DR',
-  'Am I affected?',
-  'What happened',
-  'How to protect yourself',
-  'Going deeper',
-  'Free tools, trainings, and runbooks',
-  'Sources',
-  'Corrections log',
-]) {
-  if (!episodeHtml.includes(section)) fail(`episode page is missing section: ${section}`);
-}
-if (!episodeHtml.includes('https://www.openssh.org/releasenotes.html#10.6p2')) {
-  fail('episode page is missing an OpenSSH source');
-}
-if (!episodeHtml.includes('Disclosure.')) fail('episode page is missing the AI disclosure');
-if (episodeHtml.includes('Watch the video')) {
-  fail('episode page shows Watch the video even though youtube is empty');
-}
+if (!home.includes('First episode coming soon.')) fail('home page is missing the empty state');
 
 const support = fs.existsSync(path.join(dist, 'support/index.html'))
   ? read(path.join(dist, 'support/index.html'))
@@ -143,14 +120,30 @@ if (!support.toLowerCase().includes('voluntary')) fail('support page does not sa
 const corrections = fs.existsSync(path.join(dist, 'corrections/index.html'))
   ? read(path.join(dist, 'corrections/index.html'))
   : '';
-if (!corrections.includes('Page created')) fail('corrections page is missing the publication entry');
+if (!corrections.includes('No episodes have a corrections log yet.')) {
+  fail('corrections page is missing the empty state');
+}
 if (corrections.includes('</a>or')) fail('corrections page is missing a space after the email link');
 
 const cname = fs.existsSync(path.join(dist, 'CNAME')) ? read(path.join(dist, 'CNAME')).trim() : '';
 if (cname !== 'intelligenceadjacent.com') fail(`CNAME is ${JSON.stringify(cname)}`);
 
 const rss = fs.existsSync(path.join(dist, 'rss.xml')) ? read(path.join(dist, 'rss.xml')) : '';
-if (!rss.includes('SSHole')) fail('RSS feed is missing the episode');
+if (!rss.includes('Intelligence Adjacent')) fail('RSS feed is missing the channel title');
+
+const episodesIndex = fs.existsSync(path.join(dist, 'episodes/index.html'))
+  ? read(path.join(dist, 'episodes/index.html'))
+  : '';
+if (!episodesIndex.includes('First episode coming soon.')) fail('episodes page is missing the empty state');
+
+const mockBits = ['SSHole', 'sshole-cve-2026-123158', 'CVE-2026-123158', 'IA-001'];
+for (const file of builtText) {
+  const text = read(file);
+  const relative = path.relative(root, file);
+  for (const bit of mockBits) {
+    if (text.includes(bit)) fail(`${relative} still mentions the mock episode (${bit})`);
+  }
+}
 
 const about = fs.existsSync(path.join(dist, 'about/index.html')) ? read(path.join(dist, 'about/index.html')) : '';
 if (!about.includes('hello@intelligenceadjacent.com')) fail('about page is missing the contact email');

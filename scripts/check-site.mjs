@@ -64,6 +64,8 @@ const required = [
   'about/index.html',
   'support/index.html',
   'corrections/index.html',
+  'privacy/index.html',
+  'terms/index.html',
   '404.html',
   'rss.xml',
   'CNAME',
@@ -152,6 +154,27 @@ if (!rss.includes('SSHole')) fail('RSS feed is missing the episode');
 
 const about = fs.existsSync(path.join(dist, 'about/index.html')) ? read(path.join(dist, 'about/index.html')) : '';
 if (!about.includes('hello@intelligenceadjacent.com')) fail('about page is missing the contact email');
+if (!about.includes('href="/privacy/"')) fail('footer is missing the privacy link');
+if (!about.includes('href="/terms/"')) fail('footer is missing the terms link');
+
+const privacy = fs.existsSync(path.join(dist, 'privacy/index.html'))
+  ? read(path.join(dist, 'privacy/index.html'))
+  : '';
+if (!privacy.includes('https://developers.google.com/terms/api-services-user-data-policy')) {
+  fail('privacy page is missing the Google API Services User Data Policy link');
+}
+if (!privacy.includes('Limited Use')) fail('privacy page is missing the Limited Use requirements');
+if (!privacy.includes('https://www.youtube.com/t/terms')) fail('privacy page is missing the YouTube Terms of Service');
+if (!privacy.includes('https://policies.google.com/privacy')) fail('privacy page is missing the Google Privacy Policy');
+if (!privacy.includes('https://myaccount.google.com/permissions')) {
+  fail('privacy page is missing the Google account permissions link');
+}
+
+const terms = fs.existsSync(path.join(dist, 'terms/index.html'))
+  ? read(path.join(dist, 'terms/index.html'))
+  : '';
+if (!terms.includes('/corrections/')) fail('terms page is missing the corrections link');
+if (!terms.toLowerCase().includes('not legal advice')) fail('terms page is missing the advice limit');
 
 if (failures.length > 0) {
   for (const message of failures) console.error(`check: ${message}`);

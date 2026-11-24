@@ -9,7 +9,7 @@ export const site = {
   tagline: 'Security news, minus the hype.',
   description:
     "Security news, explained by someone who's tired of the hype. What happened, whether it matters to you, and exactly what to do about it.",
-  youtube: 'https://www.youtube.com/@IntelligenceAdjacent',
+  youtube: 'https://www.youtube.com/@intelligenceadjacent',
   supportUrl: 'https://ko-fi.com/intelligenceadjacent',
   supportLabel: 'Ko-fi',
 } as const;

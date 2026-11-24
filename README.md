@@ -102,7 +102,7 @@ Do not add a photo of a person. The header image alt text is set in `src/compone
 `src/config.ts` holds the channel-wide values:
 
 - `youtube`: the channel URL (placeholder `https://www.youtube.com/@IntelligenceAdjacent`)
-- `supportUrl`: the single Buy Me a Coffee style link (placeholder `https://buymeacoffee.com/inteladj`)
+- `supportUrl`: the Ko-fi link (`https://ko-fi.com/intelligenceadjacent`)
 - `email`: `hello@intelligenceadjacent.com`
 - `tagline`: `Security news, minus the hype.` Shown on the home page. The longer positioning line is `description`.
 
@@ -160,6 +160,6 @@ GitHub's reference for this setup:
 ## Still to do by hand
 
 - Enable GitHub Pages (**Settings > Pages > Source: GitHub Actions**), add the DNS records above, verify the domain, and turn on **Enforce HTTPS**.
-- Replace `supportUrl` in `src/config.ts` if the Buy Me a Coffee URL changes.
+- Replace `supportUrl` in `src/config.ts` if the Ko-fi URL changes.
 - Replace `youtube` in `src/config.ts` if the channel URL changes, and set each episode's `youtube` field when the video is public.
 - The logo, favicon, and social image in `public/` are the current artwork. Swap a file in place if the art changes.

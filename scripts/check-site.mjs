@@ -134,7 +134,7 @@ if (episodeHtml.includes('Watch the video')) {
 const support = fs.existsSync(path.join(dist, 'support/index.html'))
   ? read(path.join(dist, 'support/index.html'))
   : '';
-if (!support.includes('https://buymeacoffee.com/inteladj')) fail('support page is missing the configured URL');
+if (!support.includes('https://ko-fi.com/intelligenceadjacent')) fail('support page is missing the configured URL');
 if (!support.toLowerCase().includes('not tax-deductible')) fail('support page is missing the tax-deductible line');
 if (!support.toLowerCase().includes('voluntary')) fail('support page does not say support is voluntary');
 

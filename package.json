@@ -1,0 +1,20 @@
+{
+  "name": "intelligence-adjacent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Public website for Intelligence Adjacent, a cybersecurity and technology news explainer.",
+  "type": "module",
+  "author": "Intelligence Adjacent",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "check:site": "node scripts/check-site.mjs"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.6",
+    "astro": "^7.4.13"
+  }
+}

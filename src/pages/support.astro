@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config';
+
+const description =
+  'Voluntary support for Intelligence Adjacent. Not payment for anything, and not tax-deductible.';
+---
+
+<Base title="Support" description={description}>
+  <p class="kicker">Optional</p>
+  <h1>Support</h1>
+  <div class="prose narrow">
+    <p>These notes are free, and they stay free.</p>
+    <p>
+      If an episode saved you time, you can buy a coffee. It is voluntary. It is not payment for advice,
+      access, a fix, or anything else. It is not tax-deductible.
+    </p>
+    <p>
+      <a class="button" href={site.supportUrl}>{site.supportLabel}</a>
+    </p>
+    <p>
+      Watching the videos helps too. <a href={site.youtube}>YouTube</a>.
+    </p>
+    <p>
+      Questions and corrections go to <a href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+  </div>
+</Base>

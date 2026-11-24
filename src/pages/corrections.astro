@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import { getEpisodes } from '../lib/episodes';
+import { episodePath, formatDate, isoDate } from '../lib/format';
+import { site } from '../config';
+
+const episodes = await getEpisodes();
+const rows = episodes
+  .flatMap((episode) =>
+    episode.data.corrections.map((entry) => ({
+      ...entry,
+      title: episode.data.title,
+      href: `${episodePath(episode.data.slug)}#corrections-log`,
+    })),
+  )
+  .sort((a, b) => b.date.getTime() - a.date.getTime());
+
+const description =
+  'Public corrections for Intelligence Adjacent episodes. Publication entries and later fixes, newest first.';
+---
+
+<Base title="Corrections" description={description}>
+  <p class="kicker">Show your work</p>
+  <h1>Corrections</h1>
+  <div class="prose">
+    <p>
+      If a page is wrong, it gets fixed in the open. Email <a href={`mailto:${site.email}`}>{site.email}</a>
+      or open an issue in this repository. The change is recorded here and in that episode's log.
+    </p>
+    <p>
+      The first row for an episode is usually the note that the page was published. Later rows are the
+      factual corrections. "No corrections yet" means nothing after that first row has changed.
+    </p>
+    {
+      rows.length === 0 ? (
+        <p>No episodes have a corrections log yet.</p>
+      ) : (
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Episode</th>
+                <th>Change</th>
+                <th>Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr>
+                  <td>
+                    <time datetime={isoDate(row.date)}>{formatDate(row.date)}</time>
+                  </td>
+                  <td>
+                    <a href={row.href}>{row.title}</a>
+                  </td>
+                  <td>{row.change}</td>
+                  <td>{row.reason}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+    }
+  </div>
+</Base>

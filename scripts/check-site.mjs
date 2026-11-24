@@ -142,6 +142,7 @@ const corrections = fs.existsSync(path.join(dist, 'corrections/index.html'))
   ? read(path.join(dist, 'corrections/index.html'))
   : '';
 if (!corrections.includes('Page created')) fail('corrections page is missing the publication entry');
+if (corrections.includes('</a>or')) fail('corrections page is missing a space after the email link');
 
 const cname = fs.existsSync(path.join(dist, 'CNAME')) ? read(path.join(dist, 'CNAME')).trim() : '';
 if (cname !== 'intelligenceadjacent.com') fail(`CNAME is ${JSON.stringify(cname)}`);

@@ -316,6 +316,17 @@ h1 {
   gap: 0.9rem;
 }
 
+.empty-state {
+  margin: 0;
+  padding: 1.25rem 1.35rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 1rem;
+}
+
 .card {
   position: relative;
   padding: 1.1rem 1.15rem 1rem;

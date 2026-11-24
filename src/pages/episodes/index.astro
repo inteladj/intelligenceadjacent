@@ -26,13 +26,17 @@ const description = 'Every Intelligence Adjacent episode, newest first. The vide
       </div>
     )
   }
-  <p class="filter-count" data-count aria-live="polite">
-    {episodes.length === 1 ? '1 episode' : `${episodes.length} episodes`}
-  </p>
+  {
+    episodes.length > 0 && (
+      <p class="filter-count" data-count aria-live="polite">
+        {episodes.length === 1 ? '1 episode' : `${episodes.length} episodes`}
+      </p>
+    )
+  }
   <p data-empty hidden>No episodes with that tag.</p>
   {
     episodes.length === 0 ? (
-      <p>No episodes yet.</p>
+      <p class="empty-state">First episode coming soon.</p>
     ) : (
       <div class="cards" data-episode-list>
         {episodes.map((episode) => (

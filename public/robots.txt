@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://intelligenceadjacent.com/sitemap-index.xml

@@ -1,0 +1,30 @@
+---
+import type { Episode } from '../lib/episodes';
+import { episodePath, formatDate, isoDate, statusClass } from '../lib/format';
+
+interface Props {
+  episode: Episode;
+  level?: 'h2' | 'h3';
+}
+
+const { episode, level = 'h2' } = Astro.props;
+const Title = level;
+const data = episode.data;
+---
+
+<article class="card">
+  <p class="card-meta">
+    {data.episode && <span>{data.episode}</span>}
+    <time datetime={isoDate(data.date)}>{formatDate(data.date)}</time>
+    {data.status && <span class={statusClass(data.status)}>{data.status}</span>}
+  </p>
+  <Title>
+    <a href={episodePath(data.slug)}>{data.title}</a>
+  </Title>
+  <p>{data.summary}</p>
+  <p class="card-tags">
+    {data.severity && <span class="badge">{data.severity}</span>}
+    {data.cve.map((id) => <span class="badge">{id}</span>)}
+    {data.tags.map((tag) => <span class="tag">{tag}</span>)}
+  </p>
+</article>

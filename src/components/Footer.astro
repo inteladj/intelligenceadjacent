@@ -1,0 +1,21 @@
+---
+import { site } from '../config';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-name">{site.name}</p>
+    <ul class="footer-links">
+      <li><a href="/episodes/">Episodes</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/support/">Support</a></li>
+      <li><a href="/corrections/">Corrections</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href={site.youtube}>YouTube</a></li>
+      <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+    </ul>
+    <p class="fine">© {year} {site.name}</p>
+  </div>
+</footer>

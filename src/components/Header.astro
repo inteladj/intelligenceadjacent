@@ -1,0 +1,34 @@
+---
+import { site } from '../config';
+
+const path = Astro.url.pathname;
+const links = [
+  { href: '/episodes/', label: 'Episodes' },
+  { href: '/about/', label: 'About' },
+  { href: '/support/', label: 'Support' },
+  { href: '/corrections/', label: 'Corrections' },
+];
+
+function isCurrent(href: string): boolean {
+  if (href === '/episodes/') return path.startsWith('/episodes');
+  return path === href;
+}
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/">
+      <img src="/wordmark-lockup.svg" alt="Intelligence Adjacent" width="267" height="32" />
+    </a>
+    <nav class="nav" aria-label="Primary">
+      {
+        links.map((link) => (
+          <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>
+            {link.label}
+          </a>
+        ))
+      }
+      <a href={site.youtube}>YouTube</a>
+    </nav>
+  </div>
+</header>

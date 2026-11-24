@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+
+const description = 'That address is not on Intelligence Adjacent.';
+---
+
+<Base title="Page not found" description={description} noindex={true}>
+  <p class="kicker">404</p>
+  <h1>Page not found</h1>
+  <div class="prose narrow">
+    <p>Nothing is published at this address. The link may be old, or the path may be wrong.</p>
+    <p class="actions">
+      <a class="button" href="/">Back home</a>
+      <a class="button button-secondary" href="/episodes/">Episodes</a>
+    </p>
+  </div>
+</Base>

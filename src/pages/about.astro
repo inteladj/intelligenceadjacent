@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config';
+
+const description =
+  'Intelligence Adjacent is an anonymous explainer channel. Primary sources, practical steps, public corrections, and disclosed AI assistance.';
+---
+
+<Base title="About" description={description}>
+  <p class="kicker">The channel</p>
+  <h1>About</h1>
+  <div class="prose narrow">
+    <p>
+      Intelligence Adjacent explains security, AI, and other technology news without the product pitch.
+      The person who makes it has spent years on incidents and is tired of hype. You do not get their
+      name, face, location, or employer. The notes have to stand on the sources.
+    </p>
+    <h2>What an episode is</h2>
+    <p>
+      A video, and a page that goes further than the video. What happened. Whether it matters to you.
+      The steps to protect yourself. Extra tips and instructions that did not fit on screen. Every source,
+      and what it was used for.
+    </p>
+    <h2>How the work is done</h2>
+    <ul>
+      <li>Primary sources first: vendor advisories, NVD, CISA, commit history, and the researcher's own write-up when there is one.</li>
+      <li>Show the work. If a number is on the page, the source for that number is on the page.</li>
+      <li>Other people's blogs and detection rules are labeled as research and inspiration, not as the record.</li>
+      <li>Unconfirmed stays unconfirmed.</li>
+    </ul>
+    <h2>Corrections</h2>
+    <p>
+      If a claim is wrong, email <a href={`mailto:${site.email}`}>{site.email}</a> or open an issue in this
+      repository. The fix is logged on the episode and on the <a href="/corrections/">corrections</a> page.
+      The old wording does not get quietly swapped out.
+    </p>
+    <h2>AI assistance</h2>
+    <p>
+      AI helps find sources, line up timelines, and check claims against the primary records. A human
+      reviews every claim, every link, and every recommendation before publication. Companion videos may
+      use a synthetic narration voice and, when they do, are labeled as altered or synthetic content on YouTube.
+    </p>
+    <p>It is a channel and the notes that go with the videos. Contact: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+  </div>
+</Base>

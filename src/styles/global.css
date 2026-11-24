@@ -13,8 +13,7 @@
   --warn-dim: #3a2e12;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --mono: ui-monospace, "Cascadia Mono", "Cascadia Code", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
-  --measure: 68ch;
-  --page: 72rem;
+  --page: 1280px;
   --header: 4.5rem;
   color-scheme: dark;
 }
@@ -196,14 +195,15 @@ h3,
 
 h1 {
   margin: 0 0 0.85rem;
-  font-size: clamp(2rem, 5vw, 3.15rem);
+  font-size: clamp(2rem, 4vw, 3.15rem);
   letter-spacing: -0.03em;
-  max-width: 18ch;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .lede,
 .summary {
-  max-width: 42rem;
+  max-width: 100%;
   font-size: 1.2rem;
   line-height: 1.5;
   margin: 0 0 1.25rem;
@@ -452,7 +452,7 @@ h1 {
 }
 
 .episode-head h1 {
-  max-width: 22ch;
+  max-width: 100%;
 }
 
 .summary {
@@ -465,7 +465,7 @@ h1 {
 }
 
 .disclosure {
-  max-width: var(--measure);
+  max-width: 100%;
   margin: 0 0 1.5rem;
   color: var(--muted);
   font-size: 0.95rem;
@@ -531,7 +531,7 @@ h1 {
 }
 
 .prose {
-  max-width: calc(var(--measure) + 4rem);
+  max-width: 100%;
   min-width: 0;
 }
 
@@ -557,6 +557,7 @@ h1 {
 .prose ul,
 .prose ol,
 .prose blockquote {
+  max-width: 100%;
   margin: 0.75rem 0;
 }
 
@@ -657,6 +658,98 @@ h1 {
   line-height: 1.45;
 }
 
+.corrections {
+  width: 100%;
+  max-width: 100%;
+  margin: 1.25rem 0 0;
+  overflow: visible;
+}
+
+.prose .corrections-table {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.prose .corrections-table th,
+.prose .corrections-table td {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.prose .corrections-table a {
+  overflow-wrap: anywhere;
+}
+
+.prose .corrections-table th:first-child,
+.prose .corrections-table td:first-child {
+  width: 14%;
+}
+
+.prose .corrections-table th:nth-child(2),
+.prose .corrections-table td:nth-child(2) {
+  width: 34%;
+}
+
+@media (max-width: 720px) {
+  .prose .corrections-table,
+  .prose .corrections-table tbody,
+  .prose .corrections-table tr,
+  .prose .corrections-table th,
+  .prose .corrections-table td,
+  .prose .corrections-table th:first-child,
+  .prose .corrections-table td:first-child,
+  .prose .corrections-table th:nth-child(2),
+  .prose .corrections-table td:nth-child(2) {
+    display: block;
+    width: auto;
+  }
+
+  .prose .corrections-table {
+    border: 0;
+  }
+
+  .prose .corrections-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .prose .corrections-table tr {
+    margin: 0 0 0.85rem;
+    padding: 0.85rem 1rem;
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+
+  .prose .corrections-table td {
+    padding: 0.4rem 0;
+    border: 0;
+  }
+
+  .prose .corrections-table td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 0.15rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+}
+
 .table-wrap {
   overflow-x: auto;
   max-width: 100%;
@@ -691,7 +784,7 @@ h1 {
 }
 
 .narrow {
-  max-width: 40rem;
+  max-width: 100%;
 }
 
 .site-footer {

@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config';
+
+const description =
+  'Terms for Intelligence Adjacent. Commentary and education, not legal, security, or financial advice.';
+---
+
+<Base title="Terms" description={description}>
+  <p class="kicker">Effective November 24, 2026</p>
+  <h1>Terms</h1>
+  <div class="prose narrow">
+    <h2>What this is</h2>
+    <p>
+      {site.name} publishes news commentary and education about security, AI, and technology. It is not legal advice,
+      security advice, or financial advice. The notes and videos are provided as-is, with no warranty.
+    </p>
+    <h2>Accuracy</h2>
+    <p>
+      We try to be accurate. When a page is wrong, the fix is published on the
+      <a href="/corrections/">corrections</a> page.
+    </p>
+    <h2>Responsible use</h2>
+    <p>
+      Security information here is for defense and learning. Do not use it against systems you do not own or do not
+      have permission to test.
+    </p>
+    <h2>Other sites</h2>
+    <p>Links leave this site. Those other sites, and what they publish, are not our responsibility.</p>
+    <h2>Copyright and the code</h2>
+    <p>
+      Content is copyright {site.name} unless a page says otherwise. The code for this website is under the MIT
+      license in this repository.
+    </p>
+    <h2>Support</h2>
+    <p>
+      Ko-fi support is voluntary. It does not buy access, advice, a fix, or any other special right.
+    </p>
+    <h2>Changes</h2>
+    <p>These terms can change. When they do, the effective date at the top of this page is updated.</p>
+    <h2>Contact</h2>
+    <p>Questions: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+  </div>
+</Base>

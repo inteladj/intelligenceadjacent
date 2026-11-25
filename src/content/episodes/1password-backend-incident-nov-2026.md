@@ -3,7 +3,7 @@ title: "One GitHub account inside 1Password: what was taken and what to do"
 date: 2026-11-25
 slug: 1password-backend-incident-nov-2026
 summary: "1Password says an attacker used an employee's corporate GitHub account to copy source code, reach its CI/CD system and push code that downloaded account records for a subset of customers. Vaults and the keys that protect them were not accessed, per 1Password. The practical risk now is convincing phishing. Open 1Password from the app or a typed address, never from an email link."
-youtube: "https://youtu.be/V8VjorOycww"
+youtube: "https://youtu.be/rmWYI3Aqzow"
 tags:
   - 1password
   - data-breach

@@ -15,6 +15,43 @@ function fail(message) {
   failures.push(message);
 }
 
+function phrase(...parts) {
+  return parts.join('');
+}
+
+const zonePatterns = [
+  [phrase('local', '-time'), 'i'],
+  [phrase('local', ' time'), 'i'],
+  [phrase('your local', ' time'), 'i'],
+  [phrase('America/', 'Chi', 'cago'), 'i'],
+  [phrase('Central', ' Time'), 'i'],
+  ['\\b' + phrase('C', 'ST') + '\\b', ''],
+  ['\\b' + phrase('C', 'DT') + '\\b', ''],
+  ['\\b' + phrase('C', 'T') + '\\b', ''],
+  [phrase('UTC', '-5'), 'i'],
+  [phrase('UTC', '-6'), 'i'],
+  [phrase('UTC', '\u2212', '5'), ''],
+  [phrase('UTC', '\u2212', '6'), ''],
+  ['\\b' + phrase('Tex', 'as') + '\\b', 'i'],
+  ['\\b' + phrase('Chi', 'cago') + '\\b', 'i'],
+  [phrase('toLocale', 'String'), ''],
+  [phrase('toLocale', 'DateString'), ''],
+  [phrase('toLocale', 'TimeString'), ''],
+  [phrase('getTimezone', 'Offset'), ''],
+  ['(?<!UTC)' + phrase('get', 'FullYear'), ''],
+  ['(?<!UTC)' + phrase('get', 'Hours'), ''],
+  ['(?<!UTC)' + phrase('get', 'Minutes'), ''],
+  ['timeZone\\s*:\\s*[\'"](?!UTC[\'"])', ''],
+].map(([source, flags]) => new RegExp(source, flags));
+
+function zoneLeak(text) {
+  for (const pattern of zonePatterns) {
+    const match = text.match(pattern);
+    if (match) return match[0];
+  }
+  return '';
+}
+
 function walk(dir, skip = new Set()) {
   if (!fs.existsSync(dir)) return [];
   const files = [];
@@ -55,6 +92,8 @@ for (const file of sourceFiles) {
   if (text.includes(emDash)) {
     fail(`${relative} contains an em dash`);
   }
+  const zone = zoneLeak(text);
+  if (zone) fail(`${relative} has a timezone or place hint (${zone})`);
 }
 
 const required = [
@@ -99,6 +138,10 @@ for (const file of builtText) {
     fail(`${relative} contains a real personal name`);
   }
   if (text.includes(emDash)) fail(`${relative} contains an em dash`);
+  if (!file.endsWith('.js')) {
+    const zone = zoneLeak(text);
+    if (zone) fail(`${relative} has a timezone or place hint (${zone})`);
+  }
   const scripts = [...text.matchAll(/<script\b[^>]*\ssrc=["']([^"']+)["']/gi)].map((match) => match[1]);
   for (const src of scripts) {
     if (/^https?:/i.test(src)) fail(`${relative} loads a third-party script: ${src}`);

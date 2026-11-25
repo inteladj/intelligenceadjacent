@@ -141,7 +141,7 @@ if (episodesIndex.includes('First episode coming soon.')) fail('episodes page st
 const episodeHtml = fs.existsSync(path.join(dist, 'episodes/optimizely-cve-2026-132224/index.html'))
   ? read(path.join(dist, 'episodes/optimizely-cve-2026-132224/index.html'))
   : '';
-if (!episodeHtml.includes('https://youtu.be/KkomgYnyntA')) fail('episode page is missing the video URL');
+if (!episodeHtml.includes('https://youtu.be/wXix8QF2TwI')) fail('episode page is missing the video URL');
 if (!episodeHtml.includes('Watch the video')) fail('episode page is missing the video link');
 
 const mockBits = ['SSHole', 'sshole-cve-2026-123158', 'CVE-2026-123158'];

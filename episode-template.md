@@ -46,6 +46,8 @@ Who is exposed, who is not, and the conditions that have to all be true.
 
 The short version and the timeline. Link the record, not a retelling.
 
+<!-- A table with the headers Time (UTC), Event, and Who says so renders as a timeline. Write times in UTC only. -->
+
 ## How to protect yourself
 
 A step-by-step roadmap. Start with the action that closes the issue, then how to check whether it was already used.

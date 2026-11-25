@@ -143,6 +143,10 @@ const episodeHtml = fs.existsSync(path.join(dist, 'episodes/optimizely-cve-2026-
   : '';
 if (!episodeHtml.includes('https://youtu.be/wXix8QF2TwI')) fail('episode page is missing the video URL');
 if (!episodeHtml.includes('Watch the video')) fail('episode page is missing the video link');
+if (!episodeHtml.includes('class="timeline"')) fail('episode page is missing the timeline');
+if (!episodeHtml.includes('>07:51<') || !episodeHtml.includes('>22:24<')) fail('episode timeline is missing its UTC times');
+if (episodeHtml.includes('<th>Time (UTC)</th>')) fail('episode timeline is still a scrolling table');
+if (!episodeHtml.includes('data-label="Date"')) fail('episode notes tables are missing wrap labels');
 
 const mockBits = ['SSHole', 'sshole-cve-2026-123158', 'CVE-2026-123158'];
 for (const file of builtText) {

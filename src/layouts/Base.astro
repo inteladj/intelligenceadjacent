@@ -80,7 +80,6 @@ const imageAlt = 'Intelligence Adjacent logo with the line Security news, minus 
         if (node.classList.contains('corrections-table')) return;
         const wrap = document.createElement('div');
         wrap.className = 'table-wrap';
-        wrap.tabIndex = 0;
         node.replaceWith(wrap);
         wrap.append(node);
       });

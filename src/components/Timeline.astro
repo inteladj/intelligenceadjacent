@@ -1,0 +1,37 @@
+---
+import type { TimelineItem } from '../lib/episode-notes';
+
+interface Props {
+  items: TimelineItem[];
+}
+
+const { items } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <div class="timeline">
+      <div class="timeline-head" aria-hidden="true">
+        <span></span>
+        <span>Time (UTC)</span>
+        <span>Event</span>
+        <span>Who says so</span>
+      </div>
+      <ol class="timeline-list" aria-label="Official timeline. Times are in UTC.">
+        {items.map((item) => (
+          <li class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <time class="timeline-time" datetime={/^\d{2}:\d{2}$/.test(item.time) ? item.time : undefined}>
+              {item.time}
+            </time>
+            <div class="timeline-event" set:html={item.event} />
+            <div class="timeline-source">
+              <span class="timeline-kicker">Who says so</span>
+              <span set:html={item.source} />
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  )
+}

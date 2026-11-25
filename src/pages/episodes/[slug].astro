@@ -1,7 +1,8 @@
 ---
-import { render } from 'astro:content';
-import EpisodeLayout from '../../layouts/Episode.astro';
+import Timeline from '../../components/Timeline.astro';
+import { prepareEpisodeHtml } from '../../lib/episode-notes';
 import { getEpisodes } from '../../lib/episodes';
+import EpisodeLayout from '../../layouts/Episode.astro';
 
 export async function getStaticPaths() {
   const episodes = await getEpisodes();
@@ -12,9 +13,19 @@ export async function getStaticPaths() {
 }
 
 const { episode } = Astro.props;
-const { Content, headings } = await render(episode);
+const html = episode.rendered?.html;
+if (!html) throw new Error(`Missing rendered HTML for episode ${episode.data.slug}.`);
+const headings = episode.rendered?.metadata?.headings ?? [];
+const { parts, timelines } = prepareEpisodeHtml(html);
 ---
 
 <EpisodeLayout episode={episode} headings={headings}>
-  <Content />
+  {
+    parts.map((part, index) => (
+      <>
+        <Fragment set:html={part} />
+        {timelines[index] && <Timeline items={timelines[index]} />}
+      </>
+    ))
+  }
 </EpisodeLayout>

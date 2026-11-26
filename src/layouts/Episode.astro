@@ -1,6 +1,7 @@
 ---
 import type { Episode } from '../lib/episodes';
 import Base from './Base.astro';
+import { site } from '../config';
 import { episodePath, formatDate, isoDate, readingMinutes, statusClass, youtubeHref } from '../lib/format';
 
 interface Heading {
@@ -32,10 +33,12 @@ const jsonLd = {
     '@type': 'Organization',
     name: 'Intelligence Adjacent',
     url: 'https://intelligenceadjacent.com',
+    sameAs: [site.youtube, site.x, site.supportUrl],
   },
   publisher: {
     '@type': 'Organization',
     name: 'Intelligence Adjacent',
+    sameAs: [site.youtube, site.x, site.supportUrl],
   },
 };
 ---

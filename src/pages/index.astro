@@ -19,7 +19,8 @@ const jsonLd = {
   <h1>{site.name}</h1>
   <p class="lede">{site.description}</p>
   <p class="actions">
-    <a class="button" href={site.youtube}>YouTube</a>
+    <a class="button" href={site.youtube} rel="me noopener">YouTube</a>
+    <a class="button button-secondary" href={site.x} rel="me noopener">{site.xLabel}</a>
     <a class="button button-secondary" href="/support/">Support</a>
   </p>
   <ul class="principles">

@@ -21,6 +21,9 @@ updated: 2026-11-27
 draft: false
 corrections:
   - date: 2026-11-27
+    change: "Update: Air Force Cloud One is now reported by Reuters and confirmed by a US official to NBC News (published Nov 27, 2026, 15:28 UTC). The Air Force still does not comment. No timing, scope, attribution or link to the other incidents has been confirmed. The Air Force has not confirmed it on the record."
+    reason: "New reporting. Source: NBC News, https://www.nbcnews.com/news/us-news/hackers-attack-penetrate-air-forces-computing-platform-rcna611559"
+  - date: 2026-11-27
     change: "NGA is now reported by two outlets, not one. CNN's updated English report (Nov 25, 2026, 20:40 UTC) says two of its sources said a Defense Department agency was affected and one named NGA; a Defense Department official declined to comment. Removed the claims that no second outlet had its own sourcing and that CNN's report did not mention NGA. Corrected the CNN timeline entry: the English report was first posted Nov 24, 2026, 21:53 UTC, and 02:50 UTC on Nov 25 was the Spanish edition. NGA remains unconfirmed. Re-checked Nov 27, 2026, 15:33 UTC: no official statement from NGA, the CIA, ODNI, the Air Force or FinCEN changes any status."
     reason: "We had read CNN's Spanish edition, which does not include the NGA line. Source: CNN via CBS 58, https://cbs58.com/news/cia-hit-by-hack-impacting-unclassified-information"
   - date: 2026-11-27
@@ -52,6 +55,7 @@ Two things are not on the record at all. No official source has linked these inc
 | Within about a month before Nov 27, 2026 | Intrusion at Air Force Cloud One discovered during upgrade work, per two people | Reported | Reuters |
 | Nov 27, 2026, about 11:00 | Reuters publishes its Cloud One exclusive | Reported | Reuters |
 | Nov 27, 2026, 12:40 | FinCEN alert still live; no CISA advisory on any of the four incidents | Checked | FinCEN, CISA |
+| Nov 27, 2026, 15:28 | NBC News reports that a US official confirmed the Cloud One hack, without details on timing or impact. The Air Force again declines to comment on specific systems. | Reported; confirmed by a US official | NBC News |
 
 ## Scope: what each agency has and hasn't said
 
@@ -64,7 +68,7 @@ Two things are not on the record at all. No official source has linked these inc
 | FinCEN | **Confirmed** | Alert, relief order, spokesperson | Attacker, entry point, start date, data touched, restoration date |
 | CIA and ODNI open-source intelligence system | **Reported** | ODNI official: no disruptions to critical capabilities or classified systems. CIA declined to comment. | Scope, timing, data, attacker; whether resolved (sources disagree) |
 | NGA | **Reported** (two outlets) | NGA did not respond to the NYT. A Defense Department official told CNN the department does not comment on the status of its networks or systems. | Everything beyond what two NYT sources and one CNN source said: what NGA data or systems were involved, and when |
-| Air Force Cloud One | **Reported** | Air Force declined to comment on specific systems | Vulnerability, attacker, how far they got, whether data was stolen |
+| Air Force Cloud One | **Reported** by Reuters; confirmed by a US official to NBC News | Air Force declined to comment on specific systems | Timing, vulnerability, attacker, how far they got, whether data was stolen, any link to the other incidents |
 
 ## What's known, incident by incident
 
@@ -86,7 +90,9 @@ The only on-record statement came from an ODNI official, who told CNN and the NY
 
 The NYT reported that NGA was also affected, according to two of its sources. NGA did not respond to the NYT. CNN updated its report on Nov 25, 2026 at 20:40 UTC: two of its sources said a Defense Department agency was also affected, and one of them identified it as NGA. Asked about NGA, a Defense Department official told CNN that "as a matter of policy, the Department does not comment on the status of its networks or systems." That is not a confirmation or a denial. NGA is now reported by two outlets with their own sources, and it is still unconfirmed. It remains the least detailed item on this page: neither outlet says what NGA data or systems were involved, or when.
 
-### Air Force Cloud One (reported)
+### Air Force Cloud One (reported; confirmed by a US official to NBC News)
+
+> **Update (Nov 27, 2026):** At 15:28 UTC, NBC News reported that a US official confirmed the hack of Cloud One. The official gave no details on timing or impact. The Air Force still does not comment on specific networks and systems. Nothing about timing, scope, attribution or a link to the other incidents has been confirmed. ([NBC News](https://www.nbcnews.com/news/us-news/hackers-attack-penetrate-air-forces-computing-platform-rcna611559))
 
 Reuters reported at about 11:00 UTC on Nov 27, 2026 that hackers had breached Cloud One, citing three people familiar with the matter (five anonymous sources in total contributed details). Per Reuters, Cloud One started in 2017 and combines cloud resources from Microsoft, Amazon, Oracle and Alphabet. It runs applications for personnel, pay, logistics and maintenance, including a command and control system that collates air defense radar feeds and a system that tracks munitions across more than 200 Air Force locations.
 
@@ -139,7 +145,7 @@ Questions that would change this page:
 - **FinCEN:** which systems were reached, how, since when, and whether the Nov 18 filing disruption and the intrusion share a cause.
 - **The intelligence system:** an on-record confirmation from the CIA or ODNI, what data was exposed, and whether the issue is resolved.
 - **NGA:** a statement from NGA or the Defense Department, and what NGA data or systems were involved.
-- **Cloud One:** an Air Force or Defense Department confirmation, the vulnerability involved, the discovery date, and whether data left the platform.
+- **Cloud One:** an on-record Air Force or Defense Department confirmation (the NBC News confirmation came from a US official who was not named), the vulnerability involved, the discovery date, and whether data left the platform.
 - **All four:** any official attribution, any official link between them, and any CISA advisory with indicators defenders can use.
 
 If any of these get answered, this page is updated first and the change is logged below with a UTC timestamp.
@@ -166,14 +172,16 @@ If any of these get answered, this page is updated first and the change is logge
 10. Associated Press, "An unclassified CIA system was breached in a cyberattack, AP source says" (Nov 24, 2026). https://apnews.com/article/cia-cyberattack-unclassified-system-bfa6d3b02e3b0e2779dfb613c900bd77
 11. The Verge, "US financial crimes bureau discloses 'cybersecurity incident'" (Nov 25, 2026, 01:00 UTC). https://www.theverge.com/policy/1041957/fincen-treasury-cybersecurity-incident
 12. CISA, news and cybersecurity advisories listings (checked Nov 27, 2026, 12:50 UTC). https://www.cisa.gov/news-events/cybersecurity-advisories
+13. NBC News, "Hackers attack and penetrate Air Force's computing platform" (Nov 27, 2026, 15:28 UTC). https://www.nbcnews.com/news/us-news/hackers-attack-penetrate-air-forces-computing-platform-rcna611559
 
 ## Corrections log
 
 | Date | Change | Reason |
 |---|---|---|
+| Nov 27, 2026 | Update: Air Force Cloud One is now reported by Reuters and confirmed by a US official to NBC News (Nov 27, 2026, 15:28 UTC). The Air Force still does not comment. No timing, scope, attribution or link to the other incidents has been confirmed. | New reporting ([source](https://www.nbcnews.com/news/us-news/hackers-attack-penetrate-air-forces-computing-platform-rcna611559)) |
 | Nov 27, 2026 | NGA is now reported by two outlets, not one. CNN's updated English report (Nov 25, 2026, 20:40 UTC) says two of its sources said a Defense Department agency was affected and one named NGA; a Defense Department official declined to comment. Removed the claims that no second outlet had its own sourcing and that CNN's report did not mention NGA. Corrected the CNN timeline entry (English report first posted Nov 24, 2026, 21:53 UTC; 02:50 UTC on Nov 25 was the Spanish edition). NGA remains unconfirmed. Re-checked Nov 27, 2026, 15:33 UTC: no official status change. | We had read CNN's Spanish edition, which does not include the NGA line ([source](https://cbs58.com/news/cia-hit-by-hack-impacting-unclassified-information)) |
 | Nov 27, 2026 | Page created. Status of every item as of Nov 27, 2026, 12:50 UTC; re-checked 13:50 UTC, unchanged. | Initial publication |
 
 ## About this page
 
-Last updated Nov 27, 2026. Facts were checked against primary sources on Nov 27, 2026, last at 15:33 UTC. If a source changes, we update this page and log it above.
+Last updated Nov 27, 2026. Facts were checked against primary sources on Nov 27, 2026, last at 15:33 UTC; Cloud One re-checked against NBC News at 17:29 UTC. If a source changes, we update this page and log it above.

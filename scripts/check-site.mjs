@@ -187,7 +187,7 @@ const episodeHtml = fs.existsSync(path.join(dist, 'episodes/optimizely-cve-2026-
 if (!episodeHtml.includes('https://youtu.be/hk2jcpPv5Cc')) fail('episode page is missing the video URL');
 if (!episodeHtml.includes('Watch the video')) fail('episode page is missing the video link');
 if (!episodeHtml.includes('class="timeline"')) fail('episode page is missing the timeline');
-if (!episodeHtml.includes('>07:51<') || !episodeHtml.includes('>22:24<')) fail('episode timeline is missing its UTC times');
+if (!episodeHtml.includes('Nov 16, 07:51') || !episodeHtml.includes('Nov 16, 22:24')) fail('episode timeline is missing its UTC times');
 if (episodeHtml.includes('<th>Time (UTC)</th>')) fail('episode timeline is still a scrolling table');
 if (!episodeHtml.includes('data-label="Date"')) fail('episode notes tables are missing wrap labels');
 

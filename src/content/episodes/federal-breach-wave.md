@@ -21,6 +21,9 @@ updated: 2026-11-27
 draft: false
 corrections:
   - date: 2026-11-27
+    change: "NGA is now reported by two outlets, not one. CNN's updated English report (Nov 25, 2026, 20:40 UTC) says two of its sources said a Defense Department agency was affected and one named NGA; a Defense Department official declined to comment. Removed the claims that no second outlet had its own sourcing and that CNN's report did not mention NGA. Corrected the CNN timeline entry: the English report was first posted Nov 24, 2026, 21:53 UTC, and 02:50 UTC on Nov 25 was the Spanish edition. NGA remains unconfirmed. Re-checked Nov 27, 2026, 15:33 UTC: no official statement from NGA, the CIA, ODNI, the Air Force or FinCEN changes any status."
+    reason: "We had read CNN's Spanish edition, which does not include the NGA line. Source: CNN via CBS 58, https://cbs58.com/news/cia-hit-by-hack-impacting-unclassified-information"
+  - date: 2026-11-27
     change: Page created
     reason: Initial publication
 ---
@@ -42,9 +45,10 @@ Two things are not on the record at all. No official source has linked these inc
 | Nov 18, 2026 | Start of FinCEN's deadline relief window. The order covers filings otherwise due from this date. It does not say the attack started then. | Confirmed (filing date only) | FinCEN Order FIN-2026-R002 |
 | Nov 24, 2026 | FinCEN issues Order FIN-2026-R002, moving some filing deadlines to Dec 30, 2026, because of a "service disruption" | Confirmed | FinCEN |
 | Nov 24, 2026 | The New York Times reports a breach of an open-source intelligence system affecting the CIA and at least two other spy agencies, including ODNI and NGA | Reported | NYT, followed by CNN, WaPo, AP, Nextgov, CyberScoop |
+| Nov 24, 2026, 21:53 | CNN reports the CIA and ODNI incident with four sources and an on-record ODNI line (time as posted on the syndicated copy; Spanish edition followed Nov 25, 02:50) | Reported | CNN |
 | Before Nov 25, 2026, 01:00 | FinCEN posts an alert on its BSA E-Filing site confirming unauthorized access to "a limited subset of its systems" | Confirmed | FinCEN; first reported by The Verge at 01:00 |
-| Nov 25, 2026, 02:50 | CNN reports the CIA and ODNI incident with four sources and an on-record ODNI line | Reported | CNN |
 | Nov 25, 2026 | Federal Reserve, FDIC, NCUA and OCC staffs say they won't penalize late Bank Secrecy Act filings caused by the disruption | Confirmed | Joint statement |
+| Nov 25, 2026, 20:40 | CNN updates its report: two of its sources say a Defense Department agency was also affected, and one names NGA. A Defense Department official declines to comment. | Reported | CNN |
 | Within about a month before Nov 27, 2026 | Intrusion at Air Force Cloud One discovered during upgrade work, per two people | Reported | Reuters |
 | Nov 27, 2026, about 11:00 | Reuters publishes its Cloud One exclusive | Reported | Reuters |
 | Nov 27, 2026, 12:40 | FinCEN alert still live; no CISA advisory on any of the four incidents | Checked | FinCEN, CISA |
@@ -59,7 +63,7 @@ Two things are not on the record at all. No official source has linked these inc
 | --- | --- | --- | --- |
 | FinCEN | **Confirmed** | Alert, relief order, spokesperson | Attacker, entry point, start date, data touched, restoration date |
 | CIA and ODNI open-source intelligence system | **Reported** | ODNI official: no disruptions to critical capabilities or classified systems. CIA declined to comment. | Scope, timing, data, attacker; whether resolved (sources disagree) |
-| NGA | **Reported** (one outlet) | NGA did not respond | Everything beyond the NYT's two sources |
+| NGA | **Reported** (two outlets) | NGA did not respond to the NYT. A Defense Department official told CNN the department does not comment on the status of its networks or systems. | Everything beyond what two NYT sources and one CNN source said: what NGA data or systems were involved, and when |
 | Air Force Cloud One | **Reported** | Air Force declined to comment on specific systems | Vulnerability, attacker, how far they got, whether data was stolen |
 
 ## What's known, incident by incident
@@ -78,9 +82,9 @@ The New York Times reported on Nov 24, 2026 that the CIA and at least two other 
 
 The only on-record statement came from an ODNI official, who told CNN and the NYT there had been no disruptions to critical capabilities or classified systems. That line neither confirms nor denies a breach. The CIA declined to comment. According to the anonymous sources, the exposed data was unclassified and classified material wasn't affected. One source told the NYT, Nextgov and AP that the issue was resolved. CNN's sources said it wasn't immediately clear when the hack happened or whether it had been resolved.
 
-### NGA (reported, one outlet)
+### NGA (reported, two outlets)
 
-The NYT reported that NGA was also affected, according to two of its sources. NGA did not respond. I could not find a second outlet with its own sourcing on NGA, and CNN's report doesn't mention it. This is the least supported item on the page.
+The NYT reported that NGA was also affected, according to two of its sources. NGA did not respond to the NYT. CNN updated its report on Nov 25, 2026 at 20:40 UTC: two of its sources said a Defense Department agency was also affected, and one of them identified it as NGA. Asked about NGA, a Defense Department official told CNN that "as a matter of policy, the Department does not comment on the status of its networks or systems." That is not a confirmation or a denial. NGA is now reported by two outlets with their own sources, and it is still unconfirmed. It remains the least detailed item on this page: neither outlet says what NGA data or systems were involved, or when.
 
 ### Air Force Cloud One (reported)
 
@@ -134,7 +138,7 @@ Questions that would change this page:
 
 - **FinCEN:** which systems were reached, how, since when, and whether the Nov 18 filing disruption and the intrusion share a cause.
 - **The intelligence system:** an on-record confirmation from the CIA or ODNI, what data was exposed, and whether the issue is resolved.
-- **NGA:** a statement from NGA, or a second outlet with its own sourcing.
+- **NGA:** a statement from NGA or the Defense Department, and what NGA data or systems were involved.
 - **Cloud One:** an Air Force or Defense Department confirmation, the vulnerability involved, the discovery date, and whether data left the platform.
 - **All four:** any official attribution, any official link between them, and any CISA advisory with indicators defenders can use.
 
@@ -155,7 +159,7 @@ If any of these get answered, this page is updated first and the change is logge
 3. Federal Reserve, FDIC, NCUA and OCC, "Joint Statement of Supervisory Policy for Bank Secrecy Act Reporting in Response to a Service Disruption" (Nov 25, 2026). https://www.fdic.gov/news/financial-institution-letters/2026/joint-statement-supervisory-policy-bank-secrecy-act
 4. Reuters, "Hackers breach US Air Force flagship Cloud One computing platform" (Nov 27, 2026). https://www.reuters.com/world/hackers-breach-us-air-force-flagship-cloud-one-computing-platform-2026-11-27/ (syndicated text: https://www.channelnewsasia.com/world/hackers-breach-us-air-force-cloud-one-computing-platform-6587501)
 5. The New York Times, "US spy agencies suffer breach of unclassified data" (Nov 24, 2026; syndicated text read Nov 27, 2026). https://mobileapp.bostonglobe.com/11262026_a74161b8-e925-11f1-ac71-b3bf3d056470/content.html
-6. CNN, CIA and ODNI cyberattack report (Nov 25, 2026, 02:50 UTC; Spanish edition, translation ours). https://cnnespanol.cnn.com/2026/11/24/eeuu/cia-ciberataque-informacion-no-clasificada-trax
+6. CNN, "CIA hit by hack impacting unclassified information" (first posted Nov 24, 2026, 21:53 UTC; updated Nov 25, 2026, 20:40 UTC; syndicated by CBS 58). https://cbs58.com/news/cia-hit-by-hack-impacting-unclassified-information . Spanish edition (Nov 25, 2026, 02:50 UTC, translation ours; does not include the NGA line): https://cnnespanol.cnn.com/2026/11/24/eeuu/cia-ciberataque-informacion-no-clasificada-trax
 7. Nextgov/FCW, "CIA, ODNI unclassified intelligence system hacked" (Nov 24, 2026). https://www.nextgov.com/cybersecurity/2026/11/cia-odni-unclassified-intelligence-system-hacked/417438/
 8. The Record, "Treasury's FinCEN takes systems offline after cybersecurity incident" (Nov 25, 2026). https://therecord.media/treasury-fincen-takes-systems-offline-after-cyber-incident
 9. CyberScoop, "Unclassified intel system hit by hackers, affecting CIA, ODNI" (Nov 24, 2026). https://cyberscoop.com/cia-odni-osint-data-breach/
@@ -167,8 +171,9 @@ If any of these get answered, this page is updated first and the change is logge
 
 | Date | Change | Reason |
 |---|---|---|
+| Nov 27, 2026 | NGA is now reported by two outlets, not one. CNN's updated English report (Nov 25, 2026, 20:40 UTC) says two of its sources said a Defense Department agency was affected and one named NGA; a Defense Department official declined to comment. Removed the claims that no second outlet had its own sourcing and that CNN's report did not mention NGA. Corrected the CNN timeline entry (English report first posted Nov 24, 2026, 21:53 UTC; 02:50 UTC on Nov 25 was the Spanish edition). NGA remains unconfirmed. Re-checked Nov 27, 2026, 15:33 UTC: no official status change. | We had read CNN's Spanish edition, which does not include the NGA line ([source](https://cbs58.com/news/cia-hit-by-hack-impacting-unclassified-information)) |
 | Nov 27, 2026 | Page created. Status of every item as of Nov 27, 2026, 12:50 UTC; re-checked 13:50 UTC, unchanged. | Initial publication |
 
 ## About this page
 
-Last updated Nov 27, 2026. Facts were checked against primary sources on Nov 27, 2026, last at 13:50 UTC. If a source changes, we update this page and log it above.
+Last updated Nov 27, 2026. Facts were checked against primary sources on Nov 27, 2026, last at 15:33 UTC. If a source changes, we update this page and log it above.

@@ -3,7 +3,7 @@ title: "AI-assisted intrusions are here, and they walk through old doors"
 date: 2026-11-27
 slug: ai-assisted-intrusions
 summary: "Three reports from one week: MiCollab zero-days that Accenture assesses were driven partly by AI tooling, Swiss and Italian agencies confirming AI-agent attacks, and a Check Point management-server campaign GreyNoise believes used agentic systems. None of them needed a new technique. Cut exposure, patch internet-facing systems fast, and watch for machine-speed behavior."
-youtube: ""
+youtube: "https://youtu.be/5jTouUn5GS0"
 tags:
   - ai-assisted-attacks
   - mitel-micollab
@@ -24,7 +24,7 @@ severity: High
 status: actively exploited
 pillar: AI and security
 updated: 2026-11-27
-draft: true
+draft: false
 corrections:
   - date: 2026-11-27
     change: Page created
